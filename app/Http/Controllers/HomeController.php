@@ -44,7 +44,7 @@ class HomeController extends Controller
 
     public function g()
     {
-        $this->client->setAuthConfigFile($_SERVER['DOCUMENT_ROOT'].'/../config/client_secret.json');
+        $this->client->setAuthConfigFile(config('services.google.secret'));
         if (Session::get('access_token')){
             $this->client->setAccessToken(Session::get('access_token'));
             if($this->client->isAccessTokenExpired()) {
@@ -63,7 +63,7 @@ class HomeController extends Controller
      */
 
     public function t(){
-        $this->client->setAuthConfigFile($_SERVER['DOCUMENT_ROOT'].'/../config/client_secret.json');
+        $this->client->setAuthConfigFile(config('services.google.secret'));
         $this->client->setRedirectUri( 'http://' .$_SERVER['HTTP_HOST'].'/transfer');
         $this->client->addScope(Google_Service_Calendar::CALENDAR_READONLY);
         if (! isset($this->code)){
