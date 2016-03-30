@@ -66,7 +66,7 @@ class HomeController extends Controller
         $this->client->setAuthConfigFile(config('services.google.secret'));
         $this->client->setRedirectUri( 'http://' .$_SERVER['HTTP_HOST'].'/transfer');
         $this->client->addScope(Google_Service_Calendar::CALENDAR_READONLY);
-        if (! isset($this->code)){
+        if (!$this->code){
             $authUrl = $this->client->createAuthUrl();
             return Redirect::to($authUrl);
         } else {
