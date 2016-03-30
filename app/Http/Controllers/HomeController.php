@@ -108,6 +108,6 @@ class HomeController extends Controller
                 $eventsRes[] = $event->getSummary().' '.$start;
             }
         }
-        var_dump($events);
+        print_r($events);
     }
 }
