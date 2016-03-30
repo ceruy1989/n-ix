@@ -18,8 +18,8 @@ class HomeController extends Controller
      * @return void
      */
 
-    public $code;
-    public $client;
+    private $code;
+    private $client;
 
     public function __construct()
     {
