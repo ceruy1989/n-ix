@@ -98,14 +98,14 @@ class HomeController extends Controller
         );
         $results = $service->events->listEvents($calendarId, $params);
         if (count($results->getItems()) == 0) {
-            $events[] = 'events list is empty';
+            $eventsRes[] = 'events list is empty';
         } else {
             foreach ($results->getItems() as $event) {
                 $start = $event->start->dateTime;
                 if (empty($start)) {
                     $start = $event->start->date;
                 }
-                $events[] = $event->getSummary().' '.$start;
+                $eventsRes[] = $event->getSummary().' '.$start;
             }
         }
         var_dump($events);
