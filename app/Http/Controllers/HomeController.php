@@ -91,23 +91,23 @@ class HomeController extends Controller
         }
         $service->calendarList->listCalendarList();
         $calendarId = 'primary';
-        $optParams = array(
+        $params = array(
             'maxResults' => 20,
             'singleEvents' => TRUE,
             'timeMin' => date('c'),
         );
-        $results = $service->events->listEvents($calendarId, $optParams);
+        $results = $service->events->listEvents($calendarId, $params);
         if (count($results->getItems()) == 0) {
-            $out[] = 'events list is empty';
+            $events[] = 'events list is empty';
         } else {
             foreach ($results->getItems() as $event) {
                 $start = $event->start->dateTime;
                 if (empty($start)) {
                     $start = $event->start->date;
                 }
-                $out[] = $event->getSummary().' '.$start;
+                $events[] = $event->getSummary().' '.$start;
             }
         }
-        var_dump($out);
+        var_dump($events);
     }
 }
